@@ -81,4 +81,9 @@ return [
     Netgen\Bundle\EzPlatformSearchExtraBundle\NetgenEzPlatformSearchExtraBundle::class => ['all' => true],
     Netgen\Bundle\EzFormsBundle\NetgenEzFormsBundle::class => ['all' => true],
     Netgen\Bundle\InformationCollectionBundle\NetgenInformationCollectionBundle::class => ['all' => true],
+    EzSystems\EzPlatformXmlTextFieldTypeBundle\EzSystemsEzPlatformXmlTextFieldTypeBundle::class => ['all' => true],
+    eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle::class => ['all' => true],
+    Netgen\Bundle\AdminUIBundle\NetgenAdminUIBundle::class => ['all' => true],
+    Netgen\Bundle\SiteLegacyBundle\NetgenSiteLegacyBundle::class => ['all' => true],
+    Netgen\Bundle\RichTextDataTypeBundle\NetgenRichTextDataTypeBundle::class => ['all' => true],
 ];

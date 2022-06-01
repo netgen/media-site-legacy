@@ -67,7 +67,9 @@
 
         "netgen/media-site-data": "^2.2",
         "netgen/site-bundle": "^2.1",
+        "netgen/site-legacy-bundle": "^2.0",
         "netgen/site-installer-bundle": "^2.1",
+        "netgen/admin-ui-bundle": "3.x-dev as 3.0",
         "netgen/ezplatform-site-api": "^4.3",
         "netgen/ezplatform-search-extra": "^2.6",
         "netgen/information-collection-bundle": "^2.0@alpha",
@@ -92,6 +94,8 @@
 
         "netgen/git-hooks": "^2.2"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "allow-plugins": {
             "composer/package-versions-deprecated": true,
@@ -99,7 +103,8 @@
             "symfony/runtime": true,
             "symfony/thanks": true,
             "ibexa/post-install": true,
-            "netgen/git-hooks": true
+            "netgen/git-hooks": true,
+            "ezsystems/ezpublish-legacy-installer": true
         },
         "optimize-autoloader": true,
         "preferred-install": {
@@ -125,10 +130,14 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
+            "ezpublish:legacy:assets_install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
+            "ezpublish:legacybundles:install_extensions --relative": "symfony-cmd"
         },
         "project-scripts": [
-            "@php bin/console ngsite:symlink:project"
+            "@php bin/console ngsite:symlink:project",
+            "@php bin/console ngsite:symlink:legacy",
+            "@php bin/console ezpublish:legacy:script bin/php/ezpgenerateautoloads.php"
         ],
         "post-install-cmd": [
             "@auto-scripts",
@@ -147,6 +156,7 @@
         "symfony/symfony": "*"
     },
     "extra": {
+        "ezpublish-legacy-dir": "ezpublish_legacy",
         "symfony": {
             "allow-contrib": true,
             "endpoint": [
