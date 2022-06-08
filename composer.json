@@ -69,7 +69,7 @@
         "netgen/site-bundle": "^2.1",
         "netgen/site-legacy-bundle": "^2.0",
         "netgen/site-installer-bundle": "^2.1",
-        "netgen/admin-ui-bundle": "3.x-dev as 3.0",
+        "netgen/admin-ui-bundle": "^3.0",
         "netgen/ezplatform-site-api": "^4.3",
         "netgen/ezplatform-search-extra": "^2.6",
         "netgen/information-collection-bundle": "^2.0@alpha",
