@@ -1,0 +1,2 @@
+netgen_admin_ui:
+    resource: '@NetgenAdminUIBundle/Resources/config/routing.yml'

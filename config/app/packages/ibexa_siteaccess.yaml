@@ -4,9 +4,14 @@ ibexa:
         list:
             - eng
             - admin
+            - ngadminui
+            - legacy_admin
         groups:
             frontend_group:
                 - eng
+            ngadmin_group:
+                - ngadminui
+                - legacy_admin
             admin_group:
                 - admin
     system:
@@ -22,11 +27,20 @@ ibexa:
                 - eng-GB
             session:
                 name: eZSESSID
+        ngadminui:
+            design: ngadminui
+            languages:
+                - eng-GB
+            session:
+                name: eZSESSID
         admin_group:
             languages:
                 - eng-GB
             session:
                 name: eZSESSID
+        legacy_admin:
+            languages:
+                - eng-GB
 netgen_layouts:
     design_list:
         app:
@@ -44,3 +58,10 @@ ibexa_design_engine:
             - admin
             - standard
             - common
+        ngadminui:
+            - ngadminui
+            - common
+ez_publish_legacy:
+    system:
+        legacy_admin:
+            legacy_mode: true

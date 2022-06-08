@@ -43,10 +43,17 @@ yarn-error.log
 /config/packages/server/local/
 /config/packages/server/local.yml
 
+/ezpublish_legacy/
+
 /public/assets/
+/public/design
+/public/extension
+/public/share
 /public/var
 /public/.htaccess
 /public/robots.txt
+/public/index_cluster.php
+/public/index_rest.php
 /web
 
 auth.json

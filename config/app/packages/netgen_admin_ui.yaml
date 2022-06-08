@@ -1,0 +1,2 @@
+imports:
+    - { resource: '@NetgenAdminUIBundle/Resources/config/ezplatform.yml' }

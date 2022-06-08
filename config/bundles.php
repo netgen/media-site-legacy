@@ -77,4 +77,9 @@ return [
     Netgen\Bundle\IbexaFormsBundle\NetgenIbexaFormsBundle::class => ['all' => true],
     Netgen\Bundle\IbexaSearchExtraBundle\NetgenIbexaSearchExtraBundle::class => ['all' => true],
     Novactive\Bundle\eZSEOBundle\NovaeZSEOBundle::class => ['all' => true],
+    EzSystems\EzPlatformXmlTextFieldTypeBundle\EzSystemsEzPlatformXmlTextFieldTypeBundle::class => ['all' => true],
+    eZ\Bundle\EzPublishLegacyBundle\EzPublishLegacyBundle::class => ['all' => true],
+    Netgen\Bundle\AdminUIBundle\NetgenAdminUIBundle::class => ['all' => true],
+    Netgen\Bundle\SiteLegacyBundle\NetgenSiteLegacyBundle::class => ['all' => true],
+    Netgen\Bundle\RichTextDataTypeBundle\NetgenRichTextDataTypeBundle::class => ['all' => true],
 ];
