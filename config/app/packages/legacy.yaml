@@ -59,13 +59,13 @@ netgen_site_legacy:
 
                 site.ini:
                     DatabaseSettings/Charset: "utf8mb4"
-                    SiteSettings/DefaultAccess: "%ezpublish.siteaccess.default%"
-                    SiteSettings/SiteList: "%ezpublish.siteaccess.list%"
+                    SiteSettings/DefaultAccess: "%ibexa.site_access.default%"
+                    SiteSettings/SiteList: "%ibexa.site_access.list%"
                     SiteSettings/RootNodeDepth: 1
                     SiteSettings/SiteURL: "%ngsite.default.site_domain%"
                     SiteSettings/MetaDataArray: "%ngsite.default.site_settings.meta_data%"
 
-                    SiteAccessSettings/AvailableSiteAccessList: "%ezpublish.siteaccess.list%"
+                    SiteAccessSettings/AvailableSiteAccessList: "%ibexa.site_access.list%"
                     SiteAccessSettings/RemoveSiteAccessIfDefaultAccess: enabled
                     # The following two parameters need to be "true" and "false" strings
                     # since eZ legacy config uses those, as opposed to booleans
