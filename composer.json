@@ -65,7 +65,7 @@
         "sentry/sentry-symfony": "^4.2",
         "twig/intl-extra": "^3.3",
 
-        "netgen/media-site-data": "^3.0",
+        "netgen/media-site-legacy-data": "^2.0",
         "netgen/site-bundle": "^3.0",
         "netgen/site-legacy-bundle": "^3.0",
         "netgen/site-installer-bundle": "^3.0",
