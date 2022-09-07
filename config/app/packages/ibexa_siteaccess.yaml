@@ -3,7 +3,7 @@ ibexa:
         default_siteaccess: eng
         list:
             - eng
-            - admin
+            - '%ngsite.admin_siteaccess_name%'
             - ngadminui
             - legacy_admin
         groups:
@@ -13,7 +13,7 @@ ibexa:
                 - ngadminui
                 - legacy_admin
             admin_group:
-                - admin
+                - '%ngsite.admin_siteaccess_name%'
     system:
         frontend_group:
             translation_siteaccesses:

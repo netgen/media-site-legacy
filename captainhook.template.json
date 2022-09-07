@@ -5,7 +5,7 @@
             {
                 "action": "\\Netgen\\GitHooks\\Action\\Regex",
                 "options": {
-                    "regex": "/^[A-Z]+-\\d+:?\\s/",
+                    "regex": "/^[A-Z0-9]+-\\d+:?\\s/",
                     "error": "Your commit message MUST start with a ticket ID"
                 }
             }
@@ -37,6 +37,24 @@
                 }
             },
             {
+                "action": "\\Netgen\\GitHooks\\Action\\PHPStan",
+                "options": {
+                    "excluded_files": ["/^deploy.*/", "/^src\\/AppBundle\\/ezpublish_legacy\\/*/"]
+                }
+            },
+            {
+                "action": "\\Netgen\\GitHooks\\Action\\JSLinter",
+                "options": {
+                    "excluded_files": []
+                }
+            },
+            {
+                "action": "\\Netgen\\GitHooks\\Action\\JSPrettier",
+                "options": {
+                    "excluded_files": []
+                }
+            },
+            {
                 "action": "\\Netgen\\GitHooks\\Action\\CheckLockFileCommitted",
                 "options": {
                     "enabled": true
@@ -61,6 +79,6 @@
         "actions": []
     },
     "config": {
-        "php-path": "/usr/bin/php"
+        "php-path": "/usr/bin/env php"
     }
 }
