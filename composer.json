@@ -1,5 +1,5 @@
 {
-    "name": "netgen/media-site",
+    "name": "netgen/media-site-legacy",
     "type": "project",
     "license": "GPL-2.0-only",
     "description": "Netgen Media Site (Powered by Netgen Layouts & Ibexa Platform)",
