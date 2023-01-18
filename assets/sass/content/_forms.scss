@@ -1,0 +1,21 @@
+.embed-form {
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        .form-label {
+            @include text-0_875;
+            &.required {
+                &:after {
+                    content: '*';
+                    margin-left: 0.25rem;
+                }
+            }
+        }
+        .form-control {
+            .bg-color-secondary & {
+                background-color: $white;
+            }
+        }
+    }
+}

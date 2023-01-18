@@ -1,46 +1,73 @@
+parameters:
+    ngsite.admin_siteaccess_name: adminui
+
 ibexa:
     siteaccess:
-        default_siteaccess: eng
+        default_siteaccess: fh_eng
         list:
-            - eng
+            - fh_eng
+            - bold_eng
+            - bold_ger
             - '%ngsite.admin_siteaccess_name%'
             - ngadminui
             - legacy_admin
         groups:
-            frontend_group:
-                - eng
+            admin_group:
+                - '%ngsite.admin_siteaccess_name%'
             ngadmin_group:
                 - ngadminui
                 - legacy_admin
-            admin_group:
-                - '%ngsite.admin_siteaccess_name%'
+            frontend_group:
+                - fh_eng
+                - bold_eng
+                - bold_ger
+            fh_group:
+                - fh_eng
+            bold_group:
+                - bold_eng
+                - bold_ger
     system:
-        frontend_group:
-            translation_siteaccesses:
-                - eng
-            content:
-                tree_root:
-                    location_id: '%ngsite.default.locations.tree_root.id%'
-        eng:
-            design: app
+        admin_group:
             languages:
                 - eng-GB
+                - ger-DE
             session:
                 name: eZSESSID
-        ngadminui:
+        ngadmin_group:
             design: ngadminui
             languages:
                 - eng-GB
             session:
                 name: eZSESSID
-        admin_group:
-            languages:
-                - eng-GB
+        fh_group:
+            design: app
+            translation_siteaccesses:
+                - fh_eng
+            content:
+                tree_root:
+                    location_id: '%ngsite.fh_group.locations.tree_root.id%'
             session:
                 name: eZSESSID
-        legacy_admin:
+        bold_group:
+            design: app
+            translation_siteaccesses:
+                - bold_eng
+                - bold_ger
+            content:
+                tree_root:
+                    location_id: '%ngsite.bold_group.locations.tree_root.id%'
+            session:
+                name: eZSESSID
+        fh_eng:
             languages:
                 - eng-GB
+        bold_eng:
+            languages:
+                - eng-GB
+        bold_ger:
+            languages:
+                - ger-DE
+
 netgen_layouts:
     design_list:
         app:
@@ -48,6 +75,7 @@ netgen_layouts:
     system:
         frontend_group:
             design: app
+
 ibexa_design_engine:
     design_list:
         app:
@@ -61,6 +89,7 @@ ibexa_design_engine:
         ngadminui:
             - ngadminui
             - common
+
 ez_publish_legacy:
     system:
         legacy_admin:
