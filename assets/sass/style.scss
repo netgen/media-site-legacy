@@ -4,7 +4,7 @@
 // External libraries
 @import '@fortawesome/fontawesome-free/css/all';
 @import 'swiper/dist/css/swiper';
-@import 'magnific-popup/src/css/main';
+@import 'photoswipe/dist/photoswipe';
 
 // Main variables
 @import 'variables';
@@ -17,6 +17,7 @@
 
 // Mixins
 @import 'mixins/text';
+@import 'mixins/mixins';
 @import 'typography';
 
 // General Layout
@@ -25,6 +26,7 @@
 @import 'layout/navigation';
 @import 'layout/breadcrumbs';
 @import 'layout/footer';
+@import 'layout/grid';
 
 // Components
 @import 'components/ng_component_hero/hero_style_1';
@@ -34,6 +36,7 @@
 @import 'components/ng_component_about/about_style_2';
 @import 'components/ng_component_about/about_style_3';
 @import 'components/ng_component_about/about_style_4';
+@import 'components/ng_component_about/about_style_5';
 @import 'components/ng_component_features/features_grid';
 @import 'components/ng_component_features/features_style_1';
 @import 'components/ng_component_features/features_style_2';
@@ -63,6 +66,7 @@
 @import 'blocks/specific/pagination';
 @import 'blocks/specific/error_pages';
 @import 'blocks/specific/social_share';
+@import 'blocks/specific/loading';
 
 // Item View Types
 @import 'content/item_view_types/extends';
@@ -75,13 +79,14 @@
 @import 'content/item_view_types/card';
 @import 'content/item_view_types/zigzag';
 @import 'content/item_view_types/accordion';
+@import 'content/item_view_types/slide';
 
 // Full views
 @import 'content/full/full_page_elements';
 @import 'content/full/recipe';
 @import 'content/full/video';
 @import 'content/full/gallery';
-@import 'content/full/feedback_form';
+@import 'content/full/contact_form';
 @import 'content/full/search';
 @import 'content/full/job_position';
 @import 'content/ezrichtext';
@@ -90,3 +95,6 @@
 
 // Cookie ribbon
 @import 'cookie_control';
+
+// Accessibility
+@import 'accessibility';

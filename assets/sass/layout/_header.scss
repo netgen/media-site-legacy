@@ -3,7 +3,6 @@ $header-bg: $white;
 /* site header */
 .site-header {
     background: $header-bg;
-    box-shadow: 0 .5rem 1rem 0 hsla(0, 0, 0, .08);
     position: relative;
     > .container {
         height: $header-height;
@@ -59,7 +58,11 @@ $header-bg: $white;
         text-align: right;
         right: 0;
         left: auto !important;
+        top: -.125rem !important;
         box-shadow: 0 .5rem 1rem 0 rgba(0, 0, 0, .1);
+        @include media-breakpoint-down(lg) {
+            text-align: left;
+        }
         a {
             padding: .5em 1em;
             display: block;
@@ -114,6 +117,8 @@ $header-bg: $white;
         background: transparent;
         border: 0;
         border-bottom: 2px solid $black;
+        appearance: none;
+        border-radius: 0;
         &:focus {
             outline: none;
         }

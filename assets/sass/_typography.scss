@@ -22,9 +22,8 @@ a {
     &,
     &:hover,
     &:focus {
-        color: inherit;
-        outline: none;
         text-decoration: none;
+        color: inherit;
     }
 }
 
@@ -51,11 +50,6 @@ img {
     max-width: 100%;
     opacity: 1;
     transition: opacity .3s;
-}
-
-img[data-src] {
-    opacity: 0;
-    width: 100%;
 }
 
 figure {

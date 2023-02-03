@@ -1,17 +1,26 @@
 .features-style-2 {
     .article-header {
-        display: flex;
-        justify-content: space-between;
+        .text {
+            width: calc((100% / 3) * 2);
+            @include media-breakpoint-down(md) {
+                width: 100%;
+            }
+            + * {
+                margin-top: 2.5rem;
+            }
+        }
         .title {
             @include text-4;
         }
-        .article-content {
-            width: 60%;
+        .short {
+            @include text-1_125;
         }
         .actions {
             display: flex;
             gap: 2rem;
-            align-items: flex-end;
+            @include media-breakpoint-down(sm) {
+                flex-direction: column;
+            }
         }
         & + .features-grid {
             margin-top: 4rem;
@@ -25,7 +34,6 @@
             flex-direction: column;
             .item-highlight-title {
                 @include text-6;
-                color: $tertiary;
                 .bg-color-black & {
                     color: $primary;
                 }

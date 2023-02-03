@@ -12,40 +12,41 @@
 {% endif %}
 
 {% block content %}
-    <article class="view-type view-type-{{ view_type }} ng-article vf1">
+    <article class="view-type view-type-{{ view_type }} ng-article">
         {% block article_header %}
             <header class="full-page-header">
                 <div class="container">
-                    {% include '@ibexadesign/parts/main_topic.html.twig' with {'use_field': true} %}
-
+                    <div class="full-page-eyebrow">
+                        {% include '@ibexadesign/parts/main_topic.html.twig' with {'use_field': true} %}
+                    </div>
                     <h1 class="full-page-title">{{ ng_render_field(content.fields.title) }}</h1>
 
                     <div class="full-page-info">
-                        By {% include '@ibexadesign/parts/author.html.twig' %} -
+                        {% include '@ibexadesign/parts/author.html.twig' %}
                         {% include '@ibexadesign/parts/time.html.twig' %}
                     </div>
                 </div>
             </header>
         {% endblock %}
 
-        <div class="container">
-            {% block image %}
-                {% if not content.fields.image.empty or not content.fields.related_multimedia.empty %}
-                    <div class="full-page-image">
-                        {{ render(
-                            controller(
-                                'ngsite.controller.relations.related_multimedia_items', {
-                                    'locationId': location.id,
-                                    'includeChildren': true,
-                                    'contentTypeIdentifiers': ['image', 'ng_video'],
-                                    'template': '@ibexadesign/parts/related_multimedia.html.twig'
-                                }
-                            )
-                        ) }}
-                    </div>
-                {% endif %}
-            {% endblock %}
+        {% block image %}
+            {% if not content.fields.image.empty or not content.fields.related_multimedia.empty %}
+                <div class="full-page-image">
+                    {{ render(
+                        controller(
+                            'ngsite.controller.relations.related_multimedia_items', {
+                                'locationId': location.id,
+                                'includeChildren': true,
+                                'contentTypeIdentifiers': ['image', 'ng_video'],
+                                'template': '@ibexadesign/parts/related_multimedia.html.twig'
+                            }
+                        )
+                    ) }}
+                </div>
+            {% endif %}
+        {% endblock %}
 
+        <div class="container container-narrow">
 
             {% block body %}
                 <div class="full-page-body">

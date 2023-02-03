@@ -3,18 +3,56 @@
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-        .form-label {
-            @include text-0_875;
-            &.required {
-                &:after {
-                    content: '*';
-                    margin-left: 0.25rem;
+        .form-group {
+            .form-label {
+                @include text-0_875;
+                &.required {
+                    &:after {
+                        content: '*';
+                        margin-left: .25rem;
+                    }
                 }
             }
-        }
-        .form-control {
-            .bg-color-secondary & {
-                background-color: $white;
+            .form-control {
+                .bg-color-secondary & {
+                    background-color: $white;
+                }
+            }
+            // Honeypot field
+            &.sender-middle-name {
+                position: absolute;
+                clip: rect(1px, 1px, 1px, 1px);
+                overflow: hidden;
+                height: 1px;
+                width: 1px;
+                word-wrap: normal;
+                visibility: hidden;
+            }
+            &.form-check {
+                margin-bottom: 0;
+                font-size: $font-size-base;
+                .form-check-input {
+                    margin-top: 0;
+                }
+                .form-label {
+                    cursor: pointer;
+                    margin-bottom: 0;
+                    display: block;
+                    p {
+                        margin-bottom: 0;
+                        + p {
+                            margin-top: 1em;
+                        }
+                    }
+                    a:not(.btn) {
+                        border-bottom: .25rem solid $primary;
+                        transition: border .3s;
+                        &:hover {
+                            color: inherit;
+                            border-color: darken($primary, 15%);
+                        }
+                    }
+                }
             }
         }
     }

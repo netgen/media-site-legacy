@@ -83,8 +83,8 @@
     @include media-breakpoint-down(lg) {
         display: none;
         position: absolute;
-        left: $gutter;
-        right: $gutter;
+        left: calc(var(--bs-gutter-x) * .5);
+        right: calc(var(--bs-gutter-x) * .5);
         top: $header-height-sm;
         z-index: 1000;
         background: $primary;
@@ -152,6 +152,7 @@
 }
 
 .mainnav-toggle {
+    @extend %hover-underline;
     display: none;
     position: relative;
     width: $header-height-sm;
@@ -182,6 +183,9 @@
         &::after {
             bottom: -.375rem;
         }
+    }
+    &:hover {
+        color: inherit;
     }
     .mainnav-active & {
         background: $primary;

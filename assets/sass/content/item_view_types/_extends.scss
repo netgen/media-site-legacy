@@ -1,56 +1,69 @@
 %item-header-info {
     @extend %clearfix;
     margin: 0;
-    text-transform: uppercase;
     @include text-0_875;
-    letter-spacing: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: $gray-54;
+    gap: .25rem 1.25rem;
+    .bg-color-black & {
+        color: $white;
+    }
     > span,
     > time,
     > a {
         display: inline-block;
-        float: left;
-        margin-right: .25rem;
         + span,
         + time,
         + a {
+            position: relative;
             &::before {
                 content: '';
-                display: inline-block;
-                vertical-align: middle;
                 width: .25rem;
                 height: .25rem;
-                background: $black;
-                margin: 0 .25rem .125rem 0;
-                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: -.75rem;
+                background-color: $black;
+                .vl2 &,
                 .bg-color-black & {
-                    background: $primary;
+                    background-color: $white;
                 }
             }
         }
-    }
-    a,
-    .main-topic, .sponsored-text {
-        font-weight: 700;
-        color: $tertiary;
+        + .recipe-details {
+            margin-left: 0;
+        }
     }
     a {
-        transition: border-color .15s;
+        transition: border-color .15s, color .15s;
         border-bottom: .125rem solid transparent;
+        margin-top: .125rem;
         &:hover {
             border-bottom-color: currentColor;
         }
     }
     .recipe-details {
-        background: $secondary;
-        padding: 0 .6153846154em;
-        color: $gray-87;
+        display: flex;
+        color: $black;
+        width: 100%;
+        margin: .25rem 0 0 0;
         i {
-            color: $gray-38;
             font-size: .8461538462em;
             margin: 0 0 .1538461538em;
         }
-        span + span {
-            margin-left: 1em;
+        & > span {
+            padding: .125rem .25rem;
+            background-color: $primary;
+            border-radius: 2px;
+            .bg-color-primary & {
+                background-color: $white;
+            }
+        }
+        & > span + span {
+            margin-left: .5rem;
         }
         &::before {
             display: none;

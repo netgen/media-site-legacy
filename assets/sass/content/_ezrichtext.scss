@@ -1,54 +1,76 @@
 /* EMBEDED OBJECTS ----------------------------------------------------- */
-.object-left {
+
+.align-left {
     float: left;
     clear: left;
     margin-right: 2.5%;
 }
-.object-right {
+.align-right {
     float: right;
     clear: right;
     margin-left: 2.5%;
 }
-.object-left,
-.object-right {
+.align-left,
+.align-right {
     max-width: 47.5%;
-}
-.object-center {
-    .view-type-embed {
-        max-width: 75%;
-        margin: 0 auto;
-    }
 }
 .view-type-embed {
     &.image,
-    &.ng-gallery {
+    &.ng-gallery,
+    &.ng-video {
         margin-bottom: 2rem;
     }
-    &.ng-video {
-        margin: 20px 0;
-        h4 {
-            margin: 10px 0;
+    &:last-child {
+        &.image,
+        &.ng-gallery,
+        &.ng-video {
+            margin-bottom: 0;
         }
     }
 }
-.clear {
-    clear: both;
-}
 
-@include media-breakpoint-down(sm) {
-    .object-left,
-    .object-right {
-        width: 100%;
-        max-width: 100%;
-        margin-left: 0;
+.view-type-embed.ng-video,
+.view-type-embed.image {
+    margin-left: -4rem;
+    margin-right: -4rem;
+    .align-left & {
         margin-right: 0;
     }
-    .object-center {
-        .view-type-embed {
+    .align-right & {
+        margin-left: 0;
+    }
+    .align-center & {
+        max-width: 75%;
+        margin: 0 auto;
+    }
+    @include media-breakpoint-down(xl) {
+        margin-left: 0;
+        margin-right: 0;
+        .align-left & {
+            margin-left: 0;
+        }
+        .align-right & {
+            margin-right: 0;
+        }
+        .align-center & {
+            max-width: 100%;
+        }
+    }
+    @include media-breakpoint-down(md) {
+        .align-left &,
+        .align-right & {
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
             max-width: 100%;
         }
     }
 }
+
+.clear {
+    clear: both;
+}
+
 /* /EMBEDED OBJECTS */
 
 /* ezrichtext elements */
@@ -56,8 +78,13 @@
     & > *[style*="text-align:justify;"] {
         text-align: inherit !important;
     }
+    > * {
+        + * {
+            margin-top: 2rem;
+        }
+    }
     p {
-        margin: 0 0 2em;
+        margin-bottom: 0;
         a:not(.btn) {
             border-bottom: .25rem solid $primary;
             transition: border .3s;
@@ -66,47 +93,36 @@
                 border-color: darken($primary, 15%);
             }
         }
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-    h1, h2, h3, h4, h5, h6 {
-        margin: 0 0 2rem;
     }
     ul {
         list-style-type: none;
-        margin: 0 0 2em;
+        margin-bottom: 0;
         padding: 0;
         > li {
             position: relative;
-            margin: 0 0 1em;
             padding: 0 0 0 1em;
             &::before {
                 content: '';
                 position: absolute;
                 left: 0;
                 border-radius: 50%;
-                top: 0.5777777em;
+                top: .5777777em;
                 width: .33333333em;
                 height: .33333333em;
                 background: $black;
             }
-            &:last-child {
-                margin-bottom: 0;
+            + li {
+                margin-top: 1rem;
             }
-        }
-        &:last-child {
-            margin-bottom: 0;
         }
     }
     ol {
         counter-reset: ol-counter;
         list-style-type: none;
-        margin: 0 0 2em;
+        margin-bottom: 0;
         padding: 0;
         > li {
             position: relative;
-            margin: 0 0 1em;
             padding: 0 0 0 1.5em;
             &::before {
                 counter-increment: ol-counter;
@@ -115,35 +131,48 @@
                 left: 0;
                 font-weight: 900;
             }
-            &:last-child {
-                margin-bottom: 0;
+            + li {
+                margin-top: 1rem;
             }
-        }
-        &:last-child {
-            margin-bottom: 0;
         }
     }
     blockquote {
-        background-color: rgba(254, 215, 47, .04);
-        border-bottom: .375rem solid $primary;
-        padding: 2rem;
-        margin-bottom: 2rem;
+        background-color: rgba($primary, .2);
+        border-bottom: .5rem solid $primary;
+        padding: 1.5rem;
+        margin-bottom: 0;
         text-align: center;
+        @include text-1_5;
         .blockquote-body {
-            @include text-1_5;
-            font-style: italic;
             &::before {
                 @extend %fontawesome;
                 content: '\f10d';
                 color: $primary;
-                font-size: 2.5em;
+                font-size: 3.5rem;
+                margin-bottom: 0.5rem;
             }
         }
         p {
-            margin: 0;
-            + p {
-                margin-top: 2em;
+            opacity: .87;
+        }
+    }
+    .factbox {
+        background-color: rgba($primary, .2);
+        border-bottom: .5rem solid $primary;
+        padding: 2rem;
+        .factbox-header {
+            h2 {
+                @include text-1_5;
+            }
+            & + .factbox-content {
+                margin-top: 1.5rem;
             }
         }
+    }
+    * + h1 {
+        margin-top: 3.75rem;
+    }
+    * + h2 {
+        margin-top: 3rem;
     }
 }

@@ -1,12 +1,17 @@
-{{ ng_view_content(
-    content,
-    'payload',
-    {
-        params: {
-            action: path('ngsite_info_collection_ajax_submit', { formContentId: content.id }),
-            label: label,
-            refererLocationId: refererLocationId|default(null),
-            class: 'embed-form js-form-embed',
-        },
-    }
-) }}
+{# content \Netgen\IbexaSiteApi\API\Values\Content #}
+{# location \Netgen\IbexaSiteApi\API\Values\Location #}
+
+{% if location is defined %}
+    {{ ng_view_content(
+        location,
+        'payload',
+        {
+            params: {
+                action: path('ngsite_info_collection_ajax_submit', { formContentId: content.id }),
+                label: label,
+                refererLocationId: refererLocationId|default(null),
+                class: 'embed-form js-form-embed',
+            },
+        }
+    ) }}
+{% endif %}

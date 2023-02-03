@@ -1,50 +1,6 @@
 .related-multimedia.swiper-container {
     .swiper-navigation {
-        @include text-base;
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        background: $black;
-        color: $white;
-        font-weight: 900;
-        display: flex;
-        z-index: 10;
-        align-items: center;
-    }
-    .swiper-button-prev,
-    .swiper-button-next {
-        position: relative;
-        left: auto;
-        right: auto;
-        top: auto;
-        bottom: auto;
-        width: 3.5em;
-        height: 3.5em;
-        display: inline-block;
-        background: transparent;
-        margin: 0;
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 1.125em;
-            height: 1.125em;
-            border-left: .2222222222em solid currentColor;
-            border-bottom: .2222222222em solid currentColor;
-            transform: rotate(45deg) translate3d(-50%, -20%, 0);
-            margin-left: -.1666666667em;
-        }
-    }
-    .swiper-button-next {
-        transform: rotate(180deg);
-    }
-    .swiper-pagination {
-        position: static;
-        width: auto;
-        @include text-1_125;
-        padding: 0 2.4em;
+        @include swiper-navigation-as-overlay($top: 0, $right: 0, $hide-arrows-on-mobile: true);
     }
     .image-wrapper {
         figcaption {
@@ -81,13 +37,100 @@
     height: 3rem;
     display: inline-block;
     left: 0;
+    margin: 0;
+    transform: translateY(-50%);
     .bg-color-primary &,
     .bg-color-black & {
         background-color: $white;
     }
+    @include media-breakpoint-down(sm) {
+        width: 2.25rem;
+        height: 2.25rem;
+        background-size: .75rem 1.5rem;
+    }
 }
 .swiper-button-next {
-    transform: rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
     left: auto;
     right: 0;
+}
+
+.ngl-vt-grid_gallery {
+    .row {
+        gap: $gap 0;
+        .view-type-gallery_grid {
+            height: 100%;
+            a {
+                display: block;
+                height: 100%;
+                position: relative;
+                img {
+                    object-fit: cover;
+                    object-position: center;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.swiper-container {
+    &.has-pagination {
+        .swiper-pagination {
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0 .5rem;
+            .swiper-pagination-bullet {
+                width: .875rem;
+                height: .875rem;
+                background-color: transparent;
+                border: .125rem solid $black;
+                transition: background-color .125s ease, border-color .125s ease;
+                &.swiper-pagination-bullet-active {
+                    background-color: $black;
+                }
+                .bg-color-black & {
+                    border-color: $white;
+                    &.swiper-pagination-bullet-active {
+                        background-color: $white;
+                    }
+                }
+            }
+        }
+        &.default-swiper {
+            .swiper-navigation {
+                @include swiper-navigation-as-overlay($right: 0, $top: 0);
+                @include media-breakpoint-down(xl) {
+                    display: none;
+                }
+            }
+        }
+        &.sushi-swiper {
+            padding-bottom: 2rem;
+            .swiper-navigation,
+            .swiper-pagination,
+            .swiper-button-prev,
+            .swiper-button-next {
+                @include media-breakpoint-down(xl) {
+                    display: none;
+                }
+            }
+            .swiper-button-prev {
+                transform: translateY(calc(-50% - 1rem));
+            }
+            .swiper-button-next {
+                transform: translateY(calc(-50% - 1rem)) rotate(180deg);
+            }
+        }
+    }
+    &.gallery-top {
+        + .gallery-thumbs {
+            margin-top: $gutter;
+        }
+    }
 }

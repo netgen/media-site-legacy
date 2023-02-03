@@ -4,15 +4,15 @@ Netgen Site install instructions
 Software requirements
 ---------------------
 
-* PHP built in server / Symfony CLI / Apache 2.4+ / Nginx 1.12+
-* MySQL 5.7+
-* PHP 7.4+ (with `gd`, `imagick`, `curl`, `json`, `mysql`, `xsl`, `xml`, `intl` and `mbstring` extensions)
+* PHP built in server / Symfony CLI / Apache 2.4+ / Nginx 1.18+
+* MySQL 8.0+
+* PHP 8.1+ (with `gd`, `imagick`, `redis`, `curl`, `json`, `mysql`, `xsl`, `xml`, `intl` and `mbstring` extensions)
 
 Optional dependencies
 ---------------------
 
-* Varnish 6.0
-* Solr 6.5+
+* Varnish 6.0 or 7.1+ with (`varnish-modules`)[https://github.com/varnish/varnish-modules/blob/master/README.md]
+* Solr 7.7 or 8.11.1+
 
 Installation instructions
 -------------------------
@@ -31,12 +31,6 @@ CREATE DATABASE <db_name> CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;
 composer create-project netgen/media-site
 ```
 
-Run the following to generate basic siteaccess configuration and set up project for development:
-
-```
-bin/console ngsite:generate:project
-```
-
 ### Create project for contribution
 
 If you are a developer wishing to contribute to `netgen/media-site`, do not use the above `composer create-project` command.
@@ -51,7 +45,7 @@ cd media-site
 If you are contributing to the latest version, skip the next step. Otherwise, take care to checkout the branch you wish to contribute to, for example:
 
 ```
-git checkout 1.11
+git checkout 1.12
 ```
 
 As either way you will not be developing on a tagged (stable) version, you need to modify `composer.json` and add the following:
@@ -79,19 +73,19 @@ yarn install
 yarn build:prod
 ```
 
-### Note for Ibexa Platform official WebPack support
+### Note for Ibexa DXP official WebPack support
 
-This repo completely replaces the default `webpack.config.js` file coming from Ibexa Platform with
+This repo completely replaces the default `webpack.config.js` file coming from Ibexa DXP with
 Netgen Site specific version which is used **only** for frontend of the project. The Ibexa provided
 file is renamed to `webpack.config.ibexa.js` without changes.
 
-Also, automatic building of Ibexa Platform Admin UI assets on every `composer install` or `composer update`
+Also, automatic building of Ibexa Admin UI assets on every `composer install` or `composer update`
 has been disabled so there's no need to install `nodejs` or `yarn` on your production servers to build
 those assets. Either deploy them via your deployment procedures, or commit the entire `public/assets` folder
-to the git repository. You can build the Ibexa Platform Admin UI assets on demand simply by executing
+to the git repository. You can build the Ibexa Admin UI assets on demand simply by executing
 `composer ibexa-assets`.
 
-If, however, you wish to bring back building Ibexa Platform Admin UI assets when running Composer, add the
+If, however, you wish to bring back building Ibexa Admin UI assets when running Composer, add the
 `public/assets/` folder to `.gitignore` and add the following to `symfony-scripts` in your `composer.json`:
 
 ```json
@@ -121,11 +115,10 @@ after `bin/console` if running in prod mode):
 php bin/console ibexa:install <SITE_NAME>
 ```
 
-where `<SITE_NAME>` is the name of wanted site, e.g. `netgen-media`,
-or `netgen-media-clean` for the clean version, without demo data.
+where `<SITE_NAME>` is the name of wanted site, e.g. `netgen-media`.
 
-Both of these sets of demo data add an administrator user to the database.
-This user's username is `admin` and its password is `publish`.
+The demo data adds an administrator user to the database.  This user's username
+is `admin` and its password is `publish`.
 
 Finally, generate the GraphQL schema for admin interface:
 
@@ -135,8 +128,8 @@ php bin/console ibexa:graphql:generate-schema
 
 ### Generate image variations
 
-If using demo content, it can be quite resource intensive to generate all needed image variations
-at request time, especially when demo content uses high quality and high resolution images.
+It can be quite resource intensive to generate all needed image variations  at
+request time, especially since demo content uses high quality and high resolution images.
 
 To overcome this, you can use the following command to generate most used image variations for all images:
 
@@ -166,15 +159,15 @@ symfony server:start
 Alternatively, you can create a new Apache virtual host and set it up to point
 to `public/` directory inside the repo root.
 
-An example virtual host is available at `doc/apache2/netgen-site-vhost.conf`
+An example virtual host is available at `doc/apache2/media-site-vhost.conf`
 
 If you wish to use rewrite rules located `.htaccess` file instead of putting
 them in virtual host configuration, you can use a virtual host variant located
-at `doc/apache2/netgen-site.conf`
+at `doc/apache2/media-site.conf`
 
 ### Setup folder permissions
 
-You need to setup file and directory permissions so Ibexa Platform can write to cache,
+You need to setup file and directory permissions so Ibexa DXP can write to cache,
 log and var folders:
 
 ```bash

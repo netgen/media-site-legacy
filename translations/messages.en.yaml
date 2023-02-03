@@ -2,7 +2,7 @@ ngsite.layout.search: "Search"
 ngsite.layout.search.button: "Go"
 ngsite.layout.search_site: "Search %site_name%"
 ngsite.layout.site_frontpage: "%site_name% front page"
-ngsite.layout.meta_generator: "Ibexa Platform powered by Netgen"
+ngsite.layout.meta_generator: "Ibexa DXP powered by Netgen"
 ngsite.layout.powered_by: "Powered by"
 ngsite.layout.cookie_settings: "Cookie settings"
 ngsite.layout.cookie_settings.save: "Save settings"
@@ -10,13 +10,13 @@ ngsite.layout.cookie_settings.accepted: "Accepted"
 ngsite.layout.cookie_settings.not_accepted: "Not accepted"
 ngsite.layout.sponsored: 'Sponsored'
 
-ngsite.search.title: 'Search'
 ngsite.search.placeholder: 'Search'
 ngsite.search.button: 'Search'
 
 ngsite.search.results: 'Search for "%searchText%" returned %searchCount% matches'
 ngsite.search.no_results: 'No results were found when searching for "%searchText%".'
 ngsite.search.did_you_mean: 'Did you mean'
+ngsite.search.item.last_updated: 'Last updated'
 
 ngsite.search.no_results.check_spelling: 'Check spelling of keywords.'
 ngsite.search.no_results.change_keywords: 'Try changing some keywords (eg, "car" instead of "cars").'
@@ -24,7 +24,6 @@ ngsite.search.no_results.less_specific_keywords: 'Try searching with less specif
 ngsite.search.no_results.reduce_keywords: 'Reduce number of keywords to get more results.'
 
 ngsite.collected_info.success_text: 'Thank you for your feedback.'
-ngsite.collected_info.return_to_site: 'Return to site'
 ngsite.collected_info.button.send: 'Send form'
 ngsite.collected_info.information_collected: 'The following information was collected'
 
@@ -40,3 +39,5 @@ ngsite.job_application.job_overview: 'Job overview'
 ngsite.job_application.requirements: 'Requirements'
 ngsite.job_application.responsibilities: 'Responsibilities'
 ngsite.job_application.deadline: 'Application deadline'
+
+ngsite.skip_to_main_content: 'Skip to main content'

@@ -1,13 +1,20 @@
 export default {
+  EVENTS: {
+    CHANGED: 'changed',
+    FAILED: 'failed',
+    SUBMITTED: 'submitted',
+    OPENED: 'opened',
+    CANCELLED: 'cancelled',
+  },
+
   push(name, suffix = null) {
-    if (!name) {
-      console.warn(`GTM push failed: name is not defined`);
+    if (name === undefined) {
+      console.warn(`GTM push failed: event name is not defined`);
 
       return;
     }
 
     let eventName = name;
-
     if (suffix) {
       eventName += `-${suffix}`;
     }
@@ -20,5 +27,5 @@ export default {
 
     window.dataLayer.push({ event: eventName });
     console.info(`GTM event pushed: ${eventName}`);
-  }
-}
+  },
+};
