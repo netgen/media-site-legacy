@@ -74,9 +74,9 @@
 
         "netgen/media-site-legacy-data": "^2.0",
         "netgen/site-bundle": "^3.1",
-        "netgen/site-legacy-bundle": "^3.0",
+        "netgen/site-legacy-bundle": "^2.0",
         "netgen/site-installer-bundle": "^3.1",
-        "netgen/admin-ui-bundle": "^4.0",
+        "netgen/admin-ui-bundle": "^3.0",
         "netgen/ibexa-site-api": "^5.1",
         "netgen/ibexa-search-extra": "^3.0",
         "netgen/information-collection-bundle": "^3.0",
