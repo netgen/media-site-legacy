@@ -1,0 +1,53 @@
+{% set site_info = ngsite.siteInfoContent %}
+
+<footer class="site-footer">
+    <div class="container">
+        {% include '@ibexadesign/content/parts/site_logo.html.twig' %}
+
+        <div class="footer-menu">
+            {% block page_additional_menu_footer %}
+                {{ render_esi(
+                    controller(
+                        'ngsite.controller.menu', {
+                            menuName: 'ngsite_additional_menu'
+                        }
+                    )
+                ) }}
+            {% endblock %}
+        </div>
+
+        <div class="footer-social">
+            <ul>
+                {% if not site_info.fields.facebook.empty %}
+                    <li><a href="{{ site_info.fields.facebook.value.link }}" target="_blank" noreferrer noopener ><i class="fab fa-facebook-f"></i><span class="tt">Facebook</span></a></li>
+                {% endif %}
+
+                {% if not site_info.fields.twitter.empty %}
+                    <li><a href="{{ site_info.fields.twitter.value.link }}" target="_blank" noreferrer noopener ><i class="fab fa-twitter"></i><span class="tt">Twitter</span></a></li>
+                {% endif %}
+
+                {% if not site_info.fields.instagram.empty %}
+                    <li><a href="{{ site_info.fields.instagram.value.link }}" target="_blank" noreferrer noopener ><i class="fab fa-instagram"></i><span class="tt">Instagram</span></a></li>
+                {% endif %}
+
+                {% if not site_info.fields.linkedin.empty %}
+                    <li><a href="{{ site_info.fields.linkedin.value.link }}" target="_blank" noreferrer noopener ><i class="fab fa-linkedin"></i><span class="tt">LinkedIn</span></a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <div class="footer-info">
+            <a href="#" class="js-open-ng-cc d-block my-2">{{ 'ngsite.layout.cookie_settings'|trans }}</a>
+            {% if not site_info.fields.footer_block.empty %}
+                <div>
+                    {{ ng_render_field(site_info.fields.footer_block) }}
+                </div>
+            {% endif %}
+
+            <address>
+                {{ 'ngsite.layout.powered_by'|trans }} <a href="https://netgen.io/netgen-stack-for-ibexa-ez-platform">Netgen &amp; Ibexa DXP</a>
+            </address>
+        </div>
+
+    </div>
+</footer>

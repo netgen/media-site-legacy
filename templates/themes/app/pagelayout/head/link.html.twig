@@ -1,0 +1,41 @@
+{% set root_location_path = ibexa_path(ibexa.rootLocation) %}
+{% set site_info = ngsite.siteInfoContent %}
+
+{% if canonical_url|default('') is not empty %}
+    <link rel="canonical" href="{{ canonical_url }}" />
+{% endif %}
+
+<link rel="home" href="{{ root_location_path }}" title="{{ 'ngsite.layout.site_frontpage'|trans({'%site_name%': site_name}) }}" />
+<link rel="index" href="{{ root_location_path }}" />
+<link rel="search" href="{{ path('ngsite_content_search') }}" title="{{ 'ngsite.layout.search_site'|trans({'%site_name%': site_name}) }}" />
+
+{# generics #}
+{% if not site_info.fields.favicon_32x32.empty %}
+    <link rel="icon" href="{{ site_info.fields.favicon_32x32.value.uri }}" sizes="32x32">
+{% endif %}
+
+{% if not site_info.fields.favicon_128x128.empty %}
+    <link rel="icon" href="{{ site_info.fields.favicon_128x128.value.uri }}" sizes="128x128">
+{% endif %}
+
+{% if not site_info.fields.favicon_192x192.empty %}
+    <link rel="icon" href="{{ site_info.fields.favicon_192x192.value.uri }}" sizes="192x192">
+{% endif %}
+
+{# Android #}
+{% if not site_info.fields.favicon_192x192.empty %}
+    <link rel="shortcut icon" href="{{ site_info.fields.favicon_192x192.value.uri }}" sizes="192x192">
+{% endif %}
+
+{# iOS #}
+{% if not site_info.fields.favicon_180x180.empty %}
+    <link rel="apple-touch-icon" href="{{ site_info.fields.favicon_180x180.value.uri }}" sizes="180x180">
+{% endif %}
+
+{% if available_hreflang_translations|default|length > 1 %}
+    {% set locale_conversion_map = ibexa.configResolver.getParameter('locale.conversion_map', 'ngsite') %}
+
+    {% for language, url in available_hreflang_translations %}
+        <link rel="alternate" href="{{ url }}" hreflang="{{ locale_conversion_map[language]|lower|replace({'_': '-'}) }}" />
+    {% endfor %}
+{% endif %}

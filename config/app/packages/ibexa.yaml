@@ -8,14 +8,6 @@ ibexa:
                     - extras
                     - link1
                     - link2
-                    - featured_item_1
-                    - featured_item_2
-                    - featured_item_3
-                    - featured_item_4
-                    - featured_item_5
-                    - featured_item_6
-                    - featured_item_7
-                    - featured_item_8
                     - item_1
                     - item_2
                     - item_3
@@ -31,13 +23,13 @@ ibexa:
             user:
                 login_template: "@ibexadesign/user/login.html.twig"
             field_templates:
-                - { template: "@ibexadesign/parts/content_fields.html.twig", priority: 5000 }
+                - { template: "@ibexadesign/content/parts/content_fields.html.twig", priority: 5000 }
 
 netgen_tags:
     system:
         frontend_group:
             tag_view:
-                template: "@ibexadesign/tag/view.html.twig"
+                template: "@ibexadesign/pages/tag.html.twig"
                 related_content_list:
                     limit: 6
                     return_content_info: false

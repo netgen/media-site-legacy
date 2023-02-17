@@ -1,0 +1,24 @@
+{# content \Netgen\IbexaSiteApi\API\Values\Content #}
+{# location \Netgen\IbexaSiteApi\API\Values\Location #}
+
+{% import '@ibexadesign/content/parts/content_field_macros.html.twig' as content_fields %}
+{% import '@ibexadesign/content/parts/slide.html.twig' as slide %}
+
+<div class="view-type view-type-{{ view_type }} ng-blog-post vl3  {% if show_details_on_hover %}show_details_on_hover{% endif %}">
+    {% if image_type == 'main' %}
+        {{ slide.image(content, 'image', 'i1320', true) }}
+
+        {% if show_details %}
+            <div class="info">
+                <h2 class="title"><a href={{ ibexa_path(location) }}>{{ content_fields.title(content) }}</a></h2>
+
+                <div class="date">
+                    {% include '@ibexadesign/content/parts/author.html.twig' %}
+                    {% include '@ibexadesign/content/parts/time.html.twig' %}
+                </div>
+            </div>
+        {% endif %}
+    {% elseif image_type == 'thumb' %}
+        {{ slide.image(content, 'image', 'i320') }}
+    {% endif %}
+</div>

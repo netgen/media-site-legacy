@@ -1,0 +1,15 @@
+{# content \Netgen\IbexaSiteApi\API\Values\Content #}
+{# location \Netgen\IbexaSiteApi\API\Values\Location #}
+
+<div class="view-type view-type-{{ view_type }} ng-gallery">
+    {{ render(
+        controller(
+            'ngsite.controller.relations.related_multimedia_items', {
+                'locationId': content.contentInfo.mainLocationId,
+                'includeChildren': true,
+                'contentTypeIdentifiers': ['image', 'ng_video'],
+                'template': '@ibexadesign/content/parts/related_multimedia.html.twig'
+            }
+        )
+    ) }}
+</div>

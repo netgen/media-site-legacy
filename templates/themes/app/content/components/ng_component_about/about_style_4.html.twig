@@ -1,0 +1,55 @@
+{# content \Netgen\IbexaSiteApi\API\Values\Content #}
+{# location \Netgen\IbexaSiteApi\API\Values\Location #}
+
+{% import "@ibexadesign/content/parts/macros.html.twig" as macros %}
+{% set image = content.fieldValue('image') %}
+{% set image_mobile = content.fieldValue('image_mobile') %}
+{% set actions = not content.fields.link_1.empty or not content.fields.link_2.empty %}
+
+{% block content %}
+<article class="view-component view-component-about about-style-4">
+    <header class="article-header">
+        {% if not content.fields.title.empty %}
+            <h2 class="title">
+                {{ ng_render_field(content.fields.title)}}
+            </h2>
+        {% endif %}
+        {% if not content.fields.description.empty or not content.fields.description_2.empty %}
+            <div class="text">
+                {% if not content.fields.description.empty %}
+                    <div class="short">
+                        {{ ng_render_field(content.fields.description) }}
+                    </div>
+                {% endif %}
+                {% if not content.fields.description_2.empty %}
+                    <div class="short">
+                        {{ ng_render_field(content.fields.description_2) }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if actions %}
+            <div class="actions">
+                {% if not content.fields.link_1.empty %}
+                    {{ ng_render_field(
+                        content.fields.link_1, {
+                            parameters: {
+                                css_class: 'btn btn-primary'
+                            }
+                        }
+                    ) }}
+                {% endif %}
+                {% if not content.fields.link_2.empty %}
+                    {{ ng_render_field(
+                        content.fields.link_2, {
+                            parameters: {
+                                css_class: 'btn btn-default'
+                            }
+                        }
+                    ) }}
+                {% endif %}
+            </div>
+        {% endif %}
+    </header>
+</article>
+{% endblock %}

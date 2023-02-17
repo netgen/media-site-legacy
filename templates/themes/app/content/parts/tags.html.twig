@@ -1,0 +1,9 @@
+{# content \Netgen\IbexaSiteApi\API\Values\Content #}
+
+{% if content.hasField('tags') and not content.fields.tags.empty %}
+    <div class="full-page-tags">
+        {% for tag in content.fields.tags.value.tags %}
+            <a href="{{ ibexa_path(tag) }}">{{ tag.keyword }}</a>
+        {% endfor %}
+    </div>
+{% endif %}

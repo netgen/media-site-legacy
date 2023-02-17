@@ -1,0 +1,153 @@
+{# content \Netgen\IbexaSiteApi\API\Values\Content #}
+
+{% macro content_link(content, link_name, link_class) %}
+{% apply spaceless %}
+    {% set url = _self.related_content_link(content)|trim %}
+    {% set open_in_new_tab = false %}
+    {% if content.hasField('link') and content.fields.link.value.isTargetLinkInNewTab %}
+        {% set open_in_new_tab = true %}
+    {% endif %}
+
+    {% set link_class = link_class|default %}
+    {% if content.fields.link.value.suffix is not null %}
+        {% set url = url ~ content.fields.link.value.suffix %}
+    {% endif %}
+
+    {% if url %}
+        <a href="{{ url }}"
+        {% if link_class is not empty %}class="{{ link_class }}"{% endif %}
+        {% if open_in_new_tab %}target="_blank" rel="nofollow noopener noreferrer" {% endif %}
+        >
+    {% endif %}
+
+    {{ link_name|default }}
+
+    {% if url %}
+        </a>
+    {% endif %}
+{% endapply %}
+{% endmacro %}
+
+{% macro image_link(content, field, alias, lazy_loading) %}
+{% apply spaceless %}
+    {% set url = _self.related_content_link(content)|trim %}
+    {% set open_in_new_tab = false %}
+    {% if content.hasField('link') and content.fields.link.value.isTargetLinkInNewTab %}
+        {% set open_in_new_tab = true %}
+    {% endif %}
+    {% if content.fields.link.value.suffix is not null %}
+        {% set url = url ~ content.fields.link.value.suffix %}
+    {% endif %}
+    {% set lazy_loading = lazy_loading ?? ibexa.configResolver.getParameter('lazy_loading.enabled', 'ngsite') %}
+
+    {% if url is empty %}
+        <span>
+    {% endif %}
+    {{ ng_render_field(
+        content.fields[field], {
+            'parameters': {
+                'alias': alias,
+                'link_href': url,
+                'link_target': open_in_new_tab ? '_blank' : '',
+                'lazy_loading': lazy_loading,
+            }
+        }
+    ) }}
+    {% if url is empty %}
+        </span>
+    {% endif %}
+
+{% endapply %}
+{% endmacro %}
+
+{% macro related_content_link(content) %}
+{% apply spaceless %}
+    {% set url = null %}
+    {% if content.hasField('link') %}
+        {% if content.fields.link.value.isTypeInternal %}
+            {% set url = path("ibexa.url.alias", { contentId: content.fields.link.value.reference }) %}
+        {% elseif content.fields.link.value.isTypeExternal %}
+            {% set url = content.fields.link.value.reference %}
+        {% endif %}
+    {% endif %}
+
+    {{ url }}
+
+{% endapply %}
+{% endmacro %}
+
+{% macro item_content_link(link, link_name) %}
+{% apply spaceless %}
+    {% set url = null %}
+    {% if link is not null %}
+        {% if link.value.isTypeInternal %}
+            {% set url = path("ibexa.url.alias", { contentId: link.value.reference }) %}
+        {% elseif link.value.isTypeExternal %}
+            {% set url = link.value.reference %}
+        {% endif %}
+    {% endif %}
+
+    {% set open_in_new_tab = false %}
+    {% if link.value.isTargetLinkInNewTab %}
+        {% set open_in_new_tab = true %}
+    {% endif %}
+
+
+    {% if link.value.suffix is not null %}
+        {% set url = url ~ link.value.suffix %}
+    {% endif %}
+
+    {% if url %}
+        <a href="{{ url }}"
+        {% if open_in_new_tab %}target="_blank" rel="nofollow noopener noreferrer" {% endif %}
+        >
+    {% endif %}
+
+    {{ link_name|default }}
+
+    {% if url %}
+        </a>
+    {% endif %}
+{% endapply %}
+{% endmacro %}
+
+{% macro item_image_link(link, field, alias, alt_text, lazy_loading) %}
+{% apply spaceless %}
+    {% set url = null %}
+    {% if link is not null %}
+        {% if link.value.isTypeInternal %}
+            {% set url = path("ibexa.url.alias", { contentId: link.value.reference }) %}
+        {% elseif link.value.isTypeExternal %}
+            {% set url = link.value.reference %}
+        {% endif %}
+    {% endif %}
+
+    {% set open_in_new_tab = false %}
+    {% if link.value.isTargetLinkInNewTab %}
+        {% set open_in_new_tab = true %}
+    {% endif %}
+    {% if link.value.suffix is not null %}
+        {% set url = url ~ link.value.suffix %}
+    {% endif %}
+    {% set lazy_loading = lazy_loading ?? ibexa.configResolver.getParameter('lazy_loading.enabled', 'ngsite') %}
+
+    {% if url is empty %}
+        <span>
+    {% endif %}
+    {{ ng_render_field(
+        field, {
+            'parameters': {
+                'alias': alias,
+                'link_href': url,
+                'alt_text': alt_text,
+                'link_target': open_in_new_tab ? '_blank' : '',
+                'lazy_loading': lazy_loading,
+            }
+        }
+    ) }}
+    {% if url is empty %}
+        </span>
+    {% endif %}
+
+{% endapply %}
+{% endmacro %}

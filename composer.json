@@ -67,7 +67,7 @@
         "twig/twig": "^2.12|^3.0",
 
         "novactive/ezseobundle": "^7.0@rc",
-        "sentry/sentry-symfony": "^4.5",
+        "sentry/sentry-symfony": "^4.6",
         "twig/intl-extra": "^3.5",
         "tanoconsulting/ibexa-migration-bundle": "^1.0",
         "mailerlite/mailerlite-api-v2-php-sdk": "^0.3.2",
@@ -79,8 +79,9 @@
         "netgen/admin-ui-bundle": "^3.0",
         "netgen/ibexa-site-api": "^5.1",
         "netgen/ibexa-search-extra": "^3.0",
-        "netgen/information-collection-bundle": "^3.0",
+        "netgen/information-collection-bundle": "^3.0@alpha",
         "netgen/ibexa-fieldtype-enhanced-link": "^1.0",
+        "netgen/better-ibexa-admin-ui": "^1.0",
 
         "netgen/layouts-standard": "~1.4.0",
         "netgen/layouts-ibexa": "~1.4.0",
@@ -115,7 +116,8 @@
             "ibexa/post-install": true,
             "netgen/git-hooks": true,
             "phpstan/extension-installer": true,
-            "netgen/ezpublish-legacy-installer": true
+            "netgen/ezpublish-legacy-installer": true,
+            "*": false
         },
         "optimize-autoloader": true,
         "preferred-install": {

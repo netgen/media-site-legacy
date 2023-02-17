@@ -35,14 +35,16 @@ yarn-error.log
 ###< liip/imagine-bundle ###
 
 .idea/
-.vscode/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
 
 /bin/*
 !bin/console
 !bin/sync_db_and_var.sh
 
-/config/packages/server/local/
-/config/packages/server/local.yml
+/config/app/server/local/
+/config/app/server/local.yaml
 
 /ezpublish_legacy/
 

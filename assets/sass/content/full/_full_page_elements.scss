@@ -1,10 +1,6 @@
 .full-page-header {
     background: $primary;
-    padding: 2rem 0 4rem;
-    margin-bottom: 4rem;
-    @include media-breakpoint-down(xxl) {
-        margin-bottom: 0;
-    }
+    padding: 2rem 0 8rem;
     &.no-breadcrumbs {
         padding: 8rem 0;
         @include media-breakpoint-down(md) {
@@ -15,10 +11,23 @@
         @include tag;
         color: $white;
     }
+    & + .full-page-image,
+    & + .full-page-audio {
+        margin-top: 4rem;
+        @include media-breakpoint-down(xxl) {
+            margin-top: 2rem;
+        }
+        @include media-breakpoint-down(sm) {
+            margin-top: 1rem;
+        }
+    }
+    & + .full-form-content {
+        margin-top: 4rem;
+    }
 }
 
 .full-page-eyebrow {
-    & + .full-page-title { 
+    & + .full-page-title {
         margin-top: 1.5rem;
     }
 }
@@ -28,6 +37,9 @@
     + .full-page-info {
         margin-top: 1.5rem;
     }
+    + .full-page-header-text {
+        margin-top: 1rem;
+    }
 }
 
 .full-page-info {
@@ -35,24 +47,43 @@
     margin: 0;
     display: flex;
     gap: 0.25rem 1.25rem;
+    flex-wrap: wrap;
     > span,
     > time,
     > a {
         display: inline-block;
-        + span,
-        + time,
-        + a {
-            position: relative;
-            &::before {
-                content: '';
-                width: .25rem;
-                height: .25rem;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                left: -.75rem;
-                background-color: rgba($black, .37);
+        position: relative;
+        div {
+            display: inline;
+        }
+        &::before {
+            content: '';
+            width: .25em;
+            height: .25em;
+            position: absolute;
+            top: .66666667em;
+            left: -.75em;
+            background-color: rgba($black, .37);
+        }
+    }
+    @include media-breakpoint-up(lg) {
+        > span,
+        > time,
+        > a {
+            &:first-child {
+                &::before {
+                    content: none;
+                }
             }
+        }
+    }
+    @include media-breakpoint-down(lg) {
+        display: block;
+        padding-left: 1rem;
+        > span,
+        > time,
+        > a {
+            width: 100%;
         }
     }
     a {
@@ -64,9 +95,6 @@
     }
 }
 .full-page-image {
-    max-width: 1440px;
-    margin: 0 auto;
-    text-align: center;
     img {
         width: 100%;
     }
@@ -74,17 +102,18 @@
 
 .full-page-intro {
     @include text-1_5;
-    font-style: italic;
-    font-weight: 400;
-    opacity: .54;
     & + * {
         margin-top: 3.75rem;
     }
 }
 
-.full-page-body {
-    margin-top: 4rem;
+.full-page-body,
+.category-children {
+    margin-top: 8rem;
     position: relative;
+    @include media-breakpoint-down(md) {
+        margin-top: 4rem;
+    }
 }
 
 .full-page-tags {

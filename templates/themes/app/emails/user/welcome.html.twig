@@ -1,0 +1,27 @@
+{% extends '@ibexadesign/emails/user/layout.html.twig' %}
+
+{% trans_default_domain "ngsite_mail" %}
+
+{% block title %}
+    <a href="{{ ibexa_url(ibexa.rootLocation) }}">{{ ngsite.siteInfoContent.fields.site_name.value.text|trim }}</a>
+{% endblock %}
+
+{% block content %}
+    {{ "ngsite.user.welcome.text"|trans }}
+
+    <br>
+
+    {{ "ngsite.user.account_information"|trans }}
+
+    <br>
+
+    {{ "ngsite.user.username"|trans }}: {{ user.login }}
+
+    <br>
+
+    {{ "ngsite.user.email"|trans }}: {{ user.email }}
+
+    <br><br>
+
+    <a href="{{ ibexa_url(ibexa.rootLocation) }}">{{ ngsite.siteInfoContent.fields.site_name.value.text|trim }}</a>
+{% endblock %}

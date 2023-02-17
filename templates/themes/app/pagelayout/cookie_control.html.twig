@@ -1,0 +1,130 @@
+{% if ngsite.siteInfoContent.hasField('related_cookie_policy') and not ngsite.siteInfoContent.fields.related_cookie_policy.empty %}
+    {% set cookie_policy = ngsite.siteInfoContent.fieldRelation('related_cookie_policy') %}
+
+    <div id="ng-cc">
+        <div class="ng-cc-overlay"></div>
+
+        <div class="ng-cc-modal">
+            <div class="ng-cc-content">
+              <div class="wrapper">
+                {% if not cookie_policy.fields.ribbon_description.empty %}
+                    {{ ng_render_field(cookie_policy.fields.ribbon_description) }}
+                {% endif %}
+                </div>
+
+                <div class="ng-cc-actions">
+                    <a href="#" class="optional-list-toggle">
+                      {% if not cookie_policy.fields.ribbon_settings_label.empty %}
+                        {{ ng_render_field(cookie_policy.fields.ribbon_settings_label) }}
+                        <span class="cookie-angle-up"></span>
+                      {% endif %}
+                    </a>
+                    <button id="ng-cc-accept" class="btn btn-primary">
+                        {% if not cookie_policy.fields.ribbon_button_accept_all_label.empty %}
+                            {{ ng_render_field(cookie_policy.fields.ribbon_button_accept_all_label) }}
+                        {% endif %}
+                    </button>
+                </div>
+                </div>
+            <div class="ng-cc-optional-list">
+              <ul>
+                    <li>
+                        <input type="checkbox" class="ng-cc-optional-checkbox" id="ng-cc-necessary" data-name="necessary" checked disabled />
+                        <label for="ng-cc-necessary">
+                            <i class="ng-cc-checkbox-icon">
+                              <span class="on ng-cc-on">{{ 'ngsite.layout.cookie_settings.accepted'|trans }}</span>
+                              <span class="off ng-cc-off">{{ 'ngsite.layout.cookie_settings.not_accepted'|trans }}</span>
+                            </i>
+
+                            {% if not cookie_policy.fields.necessary_label.empty %}
+                                {{ ng_render_field(cookie_policy.fields.necessary_label) }}
+                            {% endif %}
+                        </label>
+
+                        {% if not cookie_policy.fields.necessary_description.empty %}
+                            {{ ng_render_field(cookie_policy.fields.necessary_description) }}
+                        {% endif %}
+                    </li>
+                </ul>
+                <div class="ng-cc-optional-actions clearfix">
+                    <button id="ng-cc-optional-save" class="btn btn-outline-primary">
+                        {% if not cookie_policy.fields.ribbon_button_save_label.empty %}
+                            {{ ng_render_field(cookie_policy.fields.ribbon_button_save_label) }}
+                        {% endif %}
+                    </button>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.__ngCcConfig = {
+            options: {
+              lifetime: 30,
+            },
+            optionalCookies: [
+              {% if cookie_policy.fields.analytics_is_active.value.bool %}
+              {
+                name: 'analytics',
+                label: '{% if not cookie_policy.fields.analytics_label.empty %}{{ cookie_policy.fields.analytics_label.value }}{% endif %}',
+                description: '{% if not cookie_policy.fields.analytics_label.empty %}{{ ng_render_field(cookie_policy.fields.analytics_description)|replace({"\n": "", "\r": ""})|raw }}{% endif %}',
+                {% if cookie_policy.fields.analytics_default_state.value.bool %}
+                accepted: true,
+                {% endif %}
+                onAccept: function() {
+                  {% if not cookie_policy.fields.analytics_on_accept.empty %}
+                  {{ cookie_policy.fields.analytics_on_accept.value|raw }}
+                  {% endif %}
+                },
+                onRevoke: function() {
+                  {% if not cookie_policy.fields.analytics_on_revoke.empty %}
+                  {{ cookie_policy.fields.analytics_on_revoke.value|raw }}
+                  {% endif %}
+                },
+              },
+              {% endif %}
+
+              {% if cookie_policy.fields.marketing_is_active.value.bool %}
+              {
+                name: 'marketing',
+                label: '{% if not cookie_policy.fields.marketing_label.empty %}{{ cookie_policy.fields.marketing_label.value }}{% endif %}',
+                description: '{% if not cookie_policy.fields.marketing_label.empty %}{{ ng_render_field(cookie_policy.fields.marketing_description)|replace({"\n": "", "\r": ""})|raw }}{% endif %}',
+                {% if cookie_policy.fields.marketing_default_state.value.bool %}
+                accepted: true,
+                {% endif %}
+                onAccept: function() {
+                  {% if not cookie_policy.fields.marketing_on_accept.empty %}
+                  {{ cookie_policy.fields.marketing_on_accept.value|raw }}
+                  {% endif %}
+                },
+                onRevoke: function() {
+                  {% if not cookie_policy.fields.marketing_on_revoke.empty %}
+                  {{ cookie_policy.fields.marketing_on_revoke.value|raw }}
+                  {% endif %}
+                },
+              },
+              {% endif %}
+
+              {% if cookie_policy.fields.social_sharing_is_active.value.bool %}
+              {
+                name: 'social_sharing',
+                label: '{% if not cookie_policy.fields.social_sharing_label.empty %}{{ cookie_policy.fields.social_sharing_label.value }}{% endif %}',
+                description: '{% if not cookie_policy.fields.social_sharing_label.empty %}{{ ng_render_field(cookie_policy.fields.social_sharing_description)|replace({"\n": "", "\r": ""})|raw }}{% endif %}',
+                {% if cookie_policy.fields.social_sharing_default_state.value.bool %}
+                accepted: true,
+                {% endif %}
+                onAccept: function() {
+                  {% if not cookie_policy.fields.social_sharing_on_accept.empty %}
+                  {{ cookie_policy.fields.social_sharing_on_accept.value|raw }}
+                  {% endif %}
+                },
+                onRevoke: function() {
+                  {% if not cookie_policy.fields.social_sharing_on_revoke.empty %}
+                  {{ cookie_policy.fields.social_sharing_on_revoke.value|raw }}
+                  {% endif %}
+              },
+              {% endif %}
+            ],
+        }
+    </script>
+{% endif %}
