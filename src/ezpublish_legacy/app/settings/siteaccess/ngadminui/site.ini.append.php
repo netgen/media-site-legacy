@@ -7,7 +7,9 @@ LoginPage=custom
 [SiteAccessSettings]
 RequireUserLogin=true
 RelatedSiteAccessList[]
-RelatedSiteAccessList[]=eng
+RelatedSiteAccessList[]=fh_eng
+RelatedSiteAccessList[]=bold_eng
+RelatedSiteAccessList[]=bold_ger
 RelatedSiteAccessList[]=legacy_admin
 RelatedSiteAccessList[]=ngadminui
 ShowHiddenNodes=true
@@ -26,6 +28,7 @@ ContentObjectLocale=eng-GB
 ShowUntranslatedObjects=enabled
 SiteLanguageList[]
 SiteLanguageList[]=eng-GB
+SiteLanguageList[]=ger-DE
 TextTranslation=disabled
 
 [ContentSettings]
