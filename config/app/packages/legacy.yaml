@@ -100,3 +100,6 @@ netgen_site_legacy:
                     # MailSettings/TransportPassword: "%mailer_password%"
                     MailSettings/AdminEmail: "%ngsite.default.mail.sender_email%"
                     MailSettings/EmailSender: "%ngsite.default.mail.sender_email%"
+
+                    # PHP8 - Disable Templatecompile
+                    TemplateSettings/TemplateCompile: disabled
