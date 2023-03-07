@@ -51,6 +51,8 @@ netgen_site_legacy:
 
             injected_settings:
                 content.ini:
+                    # Important! Check the class group ids match your current setup
+                    # since the Media and Users ids set here are not the standard ids
                     ClassGroupIDs/Media: 2
                     ClassGroupIDs/Users: 3
                     # Setup class group was deleted long ago, this makes sure
