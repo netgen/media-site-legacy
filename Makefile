@@ -1,5 +1,5 @@
 APP_ENV = dev
-PHP_VERSION = php7.4
+PHP_VERSION = php8.1
 PHP_RUN = /usr/bin/env $(PHP_VERSION)
 COMPOSER_PATH = /usr/local/bin/composer2
 ifeq ("$(wildcard $(COMPOSER_PATH))","")
@@ -7,6 +7,7 @@ ifeq ("$(wildcard $(COMPOSER_PATH))","")
 endif
 COMPOSER_RUN = $(PHP_RUN) $(COMPOSER_PATH)
 CACHE_POOL = cache.redis
+STASH_HASH := $(shell git stash create)
 
 .PHONY: help
 help: ## List of all available commands
@@ -27,27 +28,30 @@ endif
 vendor: ## Run composer install
 	$(COMPOSER_RUN) install $(COMPOSER_INSTALL_PARAMETERS)
 
-.PHONY: assets-node
-assets-node:
-	n auto
-
 .PHONY: assets
+.ONESHELL:
 assets: ## Build frontend assets for DEV environment
-	@$(MAKE) -s assets-node
+	. ${NVM_DIR}/nvm.sh && nvm use || nvm install $(cat .nvmrc)
 	yarn install
 	yarn build:dev
 
 .PHONY: assets-prod
+.ONESHELL:
 assets-prod: ## Build frontend assets for PROD environment
-	@$(MAKE) -s assets-node
+	. ${NVM_DIR}/nvm.sh && nvm use || nvm install $(cat .nvmrc)
 	yarn install
 	yarn build:prod
 
 .PHONY: assets-watch
+.ONESHELL:
 assets-watch: ## Watch frontend assets (during development)
-	@$(MAKE) -s assets-node
+	. ${NVM_DIR}/nvm.sh && nvm use || nvm install $(cat .nvmrc)
 	yarn install
 	yarn watch
+
+.PHONY: graphql-schema
+graphql-schema: ## Generate graphql schema
+	$(PHP_RUN) bin/console ezplatform:graphql:generate-schema --env=$(APP_ENV)
 
 .PHONY: clear-cache
 clear-cache: ## Clear caches for specified environment (default: APP_ENV=dev)
@@ -64,7 +68,7 @@ images: ## Generate most used image variations for all images for specified envi
 
 .PHONY: migrations
 migrations: ## Run Doctrine migrations for specified environment (default: APP_ENV=dev)
-	$(PHP_RUN) bin/console doctrine:migration:migrate --env=$(APP_ENV)
+	$(PHP_RUN) bin/console doctrine:migration:migrate --allow-no-migration --env=$(APP_ENV)
 
 .PHONY: reindex
 reindex: ## Recreate or refresh search engine index for specified environment (default: APP_ENV=dev)
@@ -75,16 +79,23 @@ build: ## Build the project (install vendor, migrations, reindex, build assets, 
 	@$(MAKE) -s vendor
 	@$(MAKE) -s migrations
 	@$(MAKE) -s reindex
-	ifeq ($(APP_ENV), prod)
-		$(MAKE) -s assets-prod
-	else
-		$(MAKE) -s assets
-	endif
+ifeq ($(APP_ENV), prod)
+	$(MAKE) -s assets-prod
+else
+	$(MAKE) -s assets
+endif
+	@$(MAKE) -s graphql-schema
 	@$(MAKE) -s clear-cache
+
+.PHONY: update-code
+update-code: ## Pull the latest code from the repository (on the current branch)
+ifeq ($(STASH_HASH),)
+	git pull --rebase
+else
+	git stash && git pull --rebase && git stash pop
+endif
 
 .PHONY: refresh
 refresh: ## Fetch latest changes and build the project for specified environment (default: APP_ENV=dev)
-	/usr/bin/env git stash
-	/usr/bin/env git pull --rebase
-	/usr/bin/env git stash pop
+	@$(MAKE) -s update-code
 	@$(MAKE) -s build

@@ -27,7 +27,7 @@
 {% endmacro %}
 
 {% macro poster_slide(content, use_lazy_load, alt_text) %}
-    {% import '@ibexadesign/content/parts/slide.html.twig' as slide %}
+    {% import '@ibexadesign/content/macros/slide.html.twig' as slide %}
 
     {% set use_lazy_load = use_lazy_load|default(false) %}
     {% set alt_text = alt_text ?? null %}
@@ -88,7 +88,6 @@
                     left: 50%; top: 50%;
                     transform: translateX(-50%) translateY(-50%);
                     border: none;
-                    border-radius: 0;
                     background-color: #FED82F;
                     font-size: 5rem;
                     height: 2em;
@@ -163,7 +162,6 @@
                     left: 50%; top: 50%;
                     transform: translateX(-50%) translateY(-50%);
                     border: none;
-                    border-radius: 0;
                     background-color: #FED82F;
                     font-size: 5rem;
                     height: 2em;
