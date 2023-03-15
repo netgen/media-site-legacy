@@ -46,6 +46,7 @@ return (new PhpCsFixer\Config())
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
+            ->exclude(['ezpublish_legacy'])
             ->in(['src', 'tests']),
     )
 ;
