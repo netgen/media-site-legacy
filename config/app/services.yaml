@@ -16,6 +16,7 @@ services:
     App\:
         resource: '../../src/'
         exclude:
+            - '../../src/ezpublish_legacy/'
             - '../../src/DependencyInjection/'
             - '../../src/Entity/'
             - '../../src/Kernel.php'
