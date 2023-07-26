@@ -29,7 +29,8 @@
         "site:watch": "encore dev --watch --config-name",
         "site:server": "encore dev-server --config-name",
         "ibexa": "encore production --config=webpack.config.ibexa.js",
-        "format:js": "prettier --write assets/js/*"
+        "format:js": "prettier --write \"assets/js/**/*.js\"",
+        "linter:js": "eslint \"assets/js/**/*.js\""
     },
     "private": true,
     "devDependencies": {
@@ -71,7 +72,7 @@
         "@fortawesome/fontawesome-free": "^5.8.1",
         "@netgen/javascript-cookie-control": "^0.0.8",
         "@popperjs/core": "^2.11.6",
-        "bootstrap": "^5.2.1",
+        "bootstrap": "~5.2.1",
         "js-cookie": "^3.0.5",
         "photoswipe": "^5.3.4",
         "popper.js": "^1.15.0",
