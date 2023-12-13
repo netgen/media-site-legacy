@@ -84,5 +84,5 @@ return [
     Netgen\Bundle\AdminUIBundle\NetgenAdminUIBundle::class => ['all' => true],
     Netgen\Bundle\SiteLegacyBundle\NetgenSiteLegacyBundle::class => ['all' => true],
     Netgen\Bundle\RichTextDataTypeBundle\NetgenRichTextDataTypeBundle::class => ['all' => true],
-    Netgen\Bundle\MetadataBundle\NetgenMetadataBundle::class => ['dev' => true, 'test' => true],
+    Netgen\Bundle\MetadataBundle\NetgenMetadataBundle::class => ['all' => true],
 ];
