@@ -12,12 +12,14 @@ return (new PhpCsFixer\Config())
 
         // Overrides for rules included in PhpCsFixer rule sets
         'concat_space' => ['spacing' => 'one'],
+        'fully_qualified_strict_types' => ['phpdoc_tags' => []],
         'method_chaining_indentation' => false,
         'multiline_whitespace_before_semicolons' => false,
         'native_function_invocation' => ['include' => ['@all']],
         'no_superfluous_phpdoc_tags' => false,
         'no_unset_on_property' => false,
         'ordered_imports' => ['imports_order' => ['class', 'function', 'const'], 'sort_algorithm' => 'alpha'],
+        'ordered_types' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'alpha'],
         'php_unit_internal_class' => false,
         'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
         'php_unit_test_class_requires_covers' => false,

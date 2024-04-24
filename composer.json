@@ -26,7 +26,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "http-interop/http-factory-guzzle": "^1.2",
-        "ibexa/oss": "~4.5.0",
+        "ibexa/oss": "~4.6.0",
         "symfony/console": "5.4.*",
         "symfony/dotenv": "5.4.*",
         "symfony/flex": "^1.17|^2",
@@ -34,22 +34,23 @@
         "symfony/runtime": "5.4.*",
         "symfony/yaml": "5.4.*",
 
-        "novactive/ezseobundle": "^7.0",
-        "sentry/sentry-symfony": "^4.6",
-        "twig/intl-extra": "^3.5",
+        "novactive/ezseobundle": "^7.0.4",
+        "sentry/sentry-symfony": "^4.13",
+        "twig/twig": "^3.9",
+        "twig/intl-extra": "^3.9",
         "tanoconsulting/ibexa-migration-bundle": "^1.0",
         "mailerlite/mailerlite-api-v2-php-sdk": "^0.3.2",
 
-        "netgen/media-site-data": "^3.1",
+        "netgen/media-site-data": "^3.2",
         "netgen/site-bundle": "^3.1@beta",
         "netgen/site-legacy-bundle": "^2.0",
         "netgen/site-installer-bundle": "^3.1",
         "netgen/admin-ui-bundle": "^3.0",
-        "netgen/ibexa-site-api": "^5.1",
-        "netgen/ibexa-search-extra": "^3.0",
+        "netgen/ibexa-site-api": "^6.1.2",
+        "netgen/ibexa-search-extra": "^3.2.1",
         "netgen/information-collection-bundle": "^3.0@alpha",
-        "netgen/ibexa-fieldtype-enhanced-link": "^1.0",
-        "netgen/better-ibexa-admin-ui": "^1.0",
+        "netgen/ibexa-fieldtype-enhanced-link": "^1.1.2",
+        "netgen/better-ibexa-admin-ui": "^1.1",
 
         "netgen/layouts-standard": "~1.4.0",
         "netgen/layouts-ibexa": "~1.4.0",
@@ -62,14 +63,18 @@
         "symfony/maker-bundle": "^1.48",
         "symfony/web-profiler-bundle": "5.4.*",
 
-        "netgen/git-hooks": "^2.3",
+        "netgen/git-hooks": "^2.5",
         "deployer/recipes": "^6.2",
-        "phpstan/phpstan": "^1.9",
-        "phpstan/extension-installer": "^1.2",
-        "phpstan/phpstan-strict-rules": "^1.4",
-        "phpstan/phpstan-symfony": "^1.2",
+        "phpstan/phpstan": "^1.10",
+        "phpstan/extension-installer": "^1.3",
+        "phpstan/phpstan-strict-rules": "^1.5",
+        "phpstan/phpstan-symfony": "^1.3",
         "phpstan/phpstan-doctrine": "^1.3",
-        "php-cs-fixer/shim": "^3.20"
+        "php-cs-fixer/shim": "^3.50",
+        "phpunit/phpunit": "^9.5",
+        "symfony/browser-kit": "5.4.*",
+        "symfony/css-selector": "5.4.*",
+        "symfony/phpunit-bridge": "5.4.*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -147,7 +152,7 @@
             "docker": false
         },
         "branch-alias": {
-            "dev-master": "3.0.x-dev"
+            "dev-master": "3.2.x-dev"
         }
     }
 }

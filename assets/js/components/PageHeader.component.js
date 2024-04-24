@@ -13,6 +13,7 @@ export default class PageHeader {
     this.level1Menus = [];
     this.submenuTriggerElements = [];
     this.languageSelector = document.querySelector(options.languageSelector);
+    this.stickyHeader = document.querySelector(options.stickyHeader);
 
     this.init();
   }
@@ -24,6 +25,7 @@ export default class PageHeader {
     this.headerSearchSetup();
     this.addSubmenuTriggers();
     this.languageSelectorSetup();
+    this.stickyHeaderSetup();
   }
 
   navToggleSetup() {
@@ -31,13 +33,21 @@ export default class PageHeader {
       return;
     }
 
+    let scrollTop = 0;
+
     this.navToggle.addEventListener('click', (event) => {
       event.preventDefault();
 
-      this.changePageClasses({
-        toggle: this.options.navActiveClass,
-        remove: this.options.searchboxActiveClass,
-      });
+      if (!this.pageWrapper.classList.contains(this.options.navActiveClass)) {
+        scrollTop = window.scrollY; // set scroll position intro variable
+        this.changePageClasses({
+          add: this.options.navActiveClass,
+          remove: this.options.searchboxActiveClass,
+        });
+      } else {
+        this.changePageClasses({ remove: this.options.navActiveClass });
+        window.scrollTo({ top: scrollTop, left: 0, behavior: 'instant' }); // scroll to saved position
+      }
     });
   }
 
@@ -170,5 +180,18 @@ export default class PageHeader {
 
   togglePageClass(classToToggle) {
     this.pageWrapper.classList.toggle(classToToggle);
+  }
+
+  stickyHeaderSetup() {
+    if (this.stickyHeader === null) {
+      return;
+    }
+    ['load', 'scroll', 'resize', 'orientationchange'].forEach((eventType) => {
+      window.addEventListener(eventType, () => {
+        window.scrollY >= 1
+          ? this.stickyHeader.classList.add('site-header-sticky--active')
+          : this.stickyHeader.classList.remove('site-header-sticky--active');
+      });
+    });
   }
 }

@@ -64,7 +64,7 @@ const componentConfiguration = [
     Component: PageHeader,
     selector: 'html',
     options: {
-      pageWrapper: '#page',
+      pageWrapper: 'html',
       navToggle: '.mainnav-toggle',
       searchToggle: '.searchbox-toggle',
       headerSearch: '.header-search',
@@ -80,6 +80,7 @@ const componentConfiguration = [
       navigationList: 'ul.nav.navbar-nav',
       filledClass: 'filled',
       languageSelector: '.site-header .language-selector',
+      stickyHeader: '.site-header-sticky',
     },
   },
   {
@@ -92,7 +93,7 @@ const componentConfiguration = [
   },
   {
     Component: SwiperBase,
-    selector: '.related-multimedia.swiper-container',
+    selector: '.related-multimedia.swiper',
     options: {
       swiperPreviousButton: '.swiper-button-prev',
       swiperNextButton: '.swiper-button-next',
@@ -108,15 +109,15 @@ const componentConfiguration = [
       swiperPagination: '.swiper-pagination',
       swiperPaginationType: 'bullets',
       swiperConfig: {
-        loopFillGroupWithBlank: true,
-        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
         spaceBetween: 30,
+        slidesPerView: 1.2,
         breakpoints: {
           767: {
-            slidesPerView: 1.2,
+            slidesPerView: 2.2,
           },
           1199: {
-            slidesPerView: 2.2,
+            slidesPerView: 3,
           },
         },
       },
@@ -141,9 +142,10 @@ const componentConfiguration = [
           enabled: true,
         },
         autoHeight: true,
+        slidesPerView: 1.2,
         breakpoints: {
           1199: {
-            slidesPerView: 1.2,
+            slidesPerView: 1,
             spaceBetween: 30,
           },
         },

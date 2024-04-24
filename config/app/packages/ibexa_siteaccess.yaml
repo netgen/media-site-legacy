@@ -41,7 +41,7 @@ ibexa:
             session:
                 name: eZSESSID
         fh_group:
-            design: app
+            design: fh
             translation_siteaccesses:
                 - fh_eng
             content:
@@ -50,7 +50,7 @@ ibexa:
             session:
                 name: eZSESSID
         bold_group:
-            design: app
+            design: bold
             translation_siteaccesses:
                 - bold_eng
                 - bold_ger
@@ -79,6 +79,16 @@ netgen_layouts:
 
 ibexa_design_engine:
     design_list:
+        bold:
+            - bold
+            - app
+            - common
+            - standard
+        fh:
+            - fh
+            - app
+            - common
+            - standard
         app:
             - app
             - common
