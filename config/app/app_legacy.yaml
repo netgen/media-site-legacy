@@ -1,0 +1,3 @@
+parameters:
+    ibexa.image.imagemagick.enabled: true
+    ibexa.image.imagemagick.executable_path: '%env(IMAGEMAGICK_PATH)%'
