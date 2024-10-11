@@ -6,18 +6,21 @@ nova_ezseo:
                 copyright: ~
                 generator: "Ibexa DXP"
                 MSSmartTagsPreventParsing: "TRUE"
-            fieldtype_metas_identifier: "metas"
+            fieldtype_metas_identifier: "metadata"
             fieldtype_metas:
                 title:
                     label: 'Title'
                     default_pattern: "<title|name>"
+                    type: text
                 description:
                     label: 'Description'
                     default_pattern: "<description|short_description|title|name>"
                     maxLength: 150
+                    type: text
                 keywords:
                     label: 'Keywords'
                     default_pattern: ~
+                    type: text
             robots:
                 sitemap:
                     - url: "https://%ngsite.bold_group.site_domain%/sitemap.xml"
@@ -39,18 +42,21 @@ nova_ezseo:
                 copyright: ~
                 generator: "Ibexa DXP"
                 MSSmartTagsPreventParsing: "TRUE"
-            fieldtype_metas_identifier: "metas"
+            fieldtype_metas_identifier: "metadata"
             fieldtype_metas:
                 title:
                     label: 'Title'
                     default_pattern: "<title|name>"
+                    type: text
                 description:
                     label: 'Description'
                     default_pattern: "<description|short_description|title|name>"
                     maxLength: 150
+                    type: text
                 keywords:
                     label: 'Keywords'
                     default_pattern: ~
+                    type: text
             robots:
                 sitemap:
                     - url: "https://%ngsite.fh_group.site_domain%/sitemap.xml"
