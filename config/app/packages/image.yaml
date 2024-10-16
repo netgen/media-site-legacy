@@ -40,10 +40,14 @@ ibexa:
                         - { name: strip }
 
 liip_imagine:
+    default_filter_set_settings:
+        format: webp
     filter_sets:
         small:
             quality: 85
             jpeg_quality: 85
+            # format can also be defined per filter
+            #format: webp
         medium:
             quality: 85
             jpeg_quality: 85
