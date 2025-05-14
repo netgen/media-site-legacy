@@ -38,6 +38,10 @@ export default class PageHeader {
     this.navToggle.addEventListener('click', (event) => {
       event.preventDefault();
 
+      const ariaExpanded = this.navToggle.getAttribute('aria-expanded') === 'true';
+
+      this.navToggle.setAttribute('aria-expanded', ariaExpanded);
+
       if (!this.pageWrapper.classList.contains(this.options.navActiveClass)) {
         scrollTop = window.scrollY; // set scroll position intro variable
         this.changePageClasses({
@@ -64,6 +68,8 @@ export default class PageHeader {
         remove: this.options.navActiveClass,
       });
 
+      const ariaExpanded = this.searchToggle.getAttribute('aria-expanded') === 'true';
+      this.searchToggle.setAttribute('aria-expanded', !ariaExpanded);
       this.searchInput.focus();
     });
   }

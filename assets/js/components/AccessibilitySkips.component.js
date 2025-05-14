@@ -1,12 +1,13 @@
-export default class SkipToMainContent {
-  constructor(trigger) {
+export default class AccessibilitySkips {
+  constructor(trigger, options) {
     this.trigger = trigger;
     this.targetElement = document.querySelector(`.${this.trigger.dataset.targetClass}`);
-
+    this.options = options;
     this.init();
   }
 
   init() {
+    // general funcionality
     this.trigger.addEventListener('click', this.handleTriggerClick.bind(this));
   }
 

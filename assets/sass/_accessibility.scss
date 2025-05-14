@@ -8,10 +8,16 @@
     }
 }
 
-#skip-to-main-content {
+@mixin custom-outline($border-color: $primary, $accent-color: $outline-color) {
+    outline: 2px transparent solid;
+    box-shadow: 0 0 0 2px $accent-color, 0 0 0 4px $border-color, 0 0 4px 8px $accent-color;
+}
+
+#skip-to-main-content,
+#skip-to-cookie-banner {
     @include visually-hidden-focusable;
     position: fixed;
-    z-index: 99999;
+    z-index: 1055;
     top: $gap;
     left: 50%;
     transform: translate(-50%, -200%);
@@ -34,6 +40,17 @@ a,
 button {
     outline: none;
     &:focus-visible {
+        @include highlight;
+    }
+}
+
+.image > a {
+    &:focus-visible {
         @include custom-outline;
     }
+}
+
+.sr-only {
+    position: absolute;
+    left: -9999px;
 }
